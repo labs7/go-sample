@@ -26,4 +26,4 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: labs7/go-sample:latest
+          tags: labs7/go-sample:${GITHUB_RUN_ID}
