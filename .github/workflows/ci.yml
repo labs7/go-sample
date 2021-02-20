@@ -37,7 +37,7 @@ jobs:
       - name: Commit change
         run: |
           git config user.name "GitHub Actions Bot"
-          git config "<>"
+          git config user.email "<>"
           git commit -m "update AppVersion" -a
           git diff
           git push origin master
