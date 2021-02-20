@@ -33,7 +33,7 @@ jobs:
           repository: labs7/go-sample-deploy
       - name: Create local changes
         run: |
-          sed 's/^appVersion.*/appVersion: '"${{ github.run_id }}"'/g' go-sample/Chart.yaml 
+          sed -i -e 's/^appVersion.*/appVersion: '"${{ github.run_id }}"'/g' go-sample/Chart.yaml 
       - name: Commit change
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
