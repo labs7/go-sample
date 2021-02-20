@@ -27,3 +27,20 @@ jobs:
         with:
           push: true
           tags: labs7/go-sample:${{ github.run_id }}
+      - name: Checkout labs7/go-sample-deploy repo
+        uses: actions/checkout@v2
+        with:
+          repository: labs7/go-sample-deploy
+      - name: Create local changes
+      run: |
+        sed 's/^appVersion.*/appVersion: '"${{ github.run_id }}"'/g' go-sample/Chart.yaml 
+      - name: Commit change
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git commit -m "update AppVersion" -a
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          repository: labs7/go-sample-deploy
