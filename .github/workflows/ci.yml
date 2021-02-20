@@ -39,9 +39,9 @@ jobs:
           git config --local user.email "michael@lechners.ch"
           git config --local user.name "Michael Lechner"
           git commit -m "update AppVersion" -a
+          git diff
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
-          github_token: ${{ secrets.TOKEN }}
           repository: labs7/go-sample-deploy
           branch: ${{ github.ref }}
