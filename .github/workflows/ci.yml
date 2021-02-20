@@ -36,14 +36,8 @@ jobs:
           sed -i -e 's/^appVersion.*/appVersion: '"${{ github.run_id }}"'/g' go-sample/Chart.yaml 
       - name: Commit change
         run: |
-          git config --local user.email "michael@lechners.ch"
-          git config --local user.name "Michael Lechner"
+          git config user.name "GitHub Actions Bot"
+          git config "<>"
           git commit -m "update AppVersion" -a
           git diff
-          echo ${{ secrets.TOKEN }}
-      - name: Push changes
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.TOKEN }}
-          repository: labs7/go-sample-deploy
-          branch: ${{ github.ref }}
+          git push origin master
