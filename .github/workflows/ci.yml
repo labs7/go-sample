@@ -40,4 +40,5 @@ jobs:
           git config user.email "<>"
           git commit -m "update AppVersion" -a
           git diff
+          git remote -v
           git push origin master
